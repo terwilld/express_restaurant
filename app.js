@@ -1,3 +1,13 @@
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+    // console.log("test")
+    // console.log(process)
+    // console.log(process.env)
+    // console.log(process.env.NODE_ENV)
+    // console.log(process.env.DB_URL)
+}
+
+
 const express = require('express');
 const mongoose = require('mongoose');
 const Restaurant = require('./models/restaurant')
@@ -5,8 +15,23 @@ const methodOverride = require('method-override')
 
 const app = express();
 const path = require('path')
+const dbURL = process.env.DB_URL  || 'mongodb://127.0.0.1:27017/yelp-camp'
+console.log(`using this database: ${dbURL}`)
 
-mongoose.connect('mongodb://127.0.0.1:27017/restaurants',{
+
+
+
+// mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp',{
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// } );
+
+// mongoose.connect(dbURL,{
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// } );
+
+mongoose.connect(dbURL,{
     useNewUrlParser: true,
     useUnifiedTopology: true
 } );
@@ -99,10 +124,10 @@ app.get('/makerestaurant', async (req,res) => {
     })
 
 
-app.listen(4000, () => {
-    console.log("Serving on port 4000")
-
-})
+const port = process.env.PORT || 4000
+    app.listen(port, () => {
+        console.log(`Serving on port ${port}`)
+    })
 
 
 
