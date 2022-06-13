@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurants</title>
+</head>
+<body>
+    <h1>These are my restaurants</h1>
+    <a href="/restaurants/new">Add Restaurant</a>
+    <ul>
+        <% //for (let restaurant of restaurants) { console.log(restaurant)} %> 
+        <% for (let restaurant of restaurants) { %>
+            <li>  <a href="/restaurants/<%=restaurant._id%>"><%= restaurant.name%></a>&nbsp;&nbsp;&nbsp;&nbsp;      <%=restaurant.location%></li>
+        <% } %> 
+
+            
+
+    </ul>
+</body>
+</html>
