@@ -15,7 +15,7 @@ const methodOverride = require('method-override')
 
 const app = express();
 const path = require('path')
-const dbURL = process.env.DB_URL  || 'mongodb://127.0.0.1:27017/yelp-camp'
+const dbURL = process.env.DB_URL  || 'mongodb://127.0.0.1:27017/restaurants'
 console.log(`using this database: ${dbURL}`)
 
 
